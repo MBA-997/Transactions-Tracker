@@ -46,8 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
       builder: (_) {
         return GestureDetector(
           onTap: () {},
-          child: NewTransaction(_addNewTransaction),
           behavior: HitTestBehavior.opaque,
+          child: NewTransaction(_addNewTransaction),
         );
       },
     );
@@ -78,12 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container(
+            SizedBox(
               width: double.infinity,
               child: Card(
                 color: Colors.purple,
                 elevation: 5,
-                child: Text('Child Text'),
               ),
             ),
             Chart(_recentTransactions),
