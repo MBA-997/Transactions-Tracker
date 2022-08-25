@@ -13,8 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Transaction Tracker',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
+          primarySwatch: Colors.purple,
+          errorColor: Colors.grey,
+          textTheme: ThemeData.light().textTheme.copyWith(
+                button: TextStyle(color: Colors.white),
+              )),
       home: MyHomePage(),
     );
   }
@@ -28,15 +31,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [];
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(
+      String txTitle, double txAmount, DateTime chosenDate) {
     final newTx = Transaction(
         id: DateTime.now().toString(),
         amount: txAmount,
-        date: DateTime.now(),
+        date: chosenDate,
         title: txTitle);
 
     setState(() {
       _userTransactions.add(newTx);
+    });
+  }
+
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((tx) => id == tx.id);
     });
   }
 
@@ -81,12 +91,12 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               width: double.infinity,
               child: Card(
-                color: Colors.purple,
+                color: Theme.of(context).primaryColor,
                 elevation: 5,
               ),
             ),
             Chart(_recentTransactions),
-            TransactionList(_userTransactions),
+            TransactionList(_userTransactions, _deleteTransaction),
           ],
         ),
       ),
