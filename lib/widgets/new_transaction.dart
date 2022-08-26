@@ -116,7 +116,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     Colors.purple,
                   ),
                 ),
-                child: Text('Add Transaction'),
+                child: const Text('Add Transaction'),
               )
             ],
           ),

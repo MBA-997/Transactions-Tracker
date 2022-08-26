@@ -83,21 +83,21 @@ class _MyHomePageState extends State<MyHomePage> {
     final isLandscape = Orientation.landscape == mediaQuery.orientation;
 
     final navBar = CupertinoNavigationBar(
-        middle: Text('Flutter App'),
+        middle: const Text('Flutter App'),
         trailing: Row(
           children: <Widget>[
             GestureDetector(
-              child: Icon(CupertinoIcons.add),
+              child: const Icon(CupertinoIcons.add),
               onTap: () => _startAddNewTransaction(context),
             )
           ],
         ));
     final appBar = AppBar(
-      title: Text('Flutter App'),
+      title: const Text('Flutter App'),
       actions: <Widget>[
         IconButton(
           onPressed: () => _startAddNewTransaction(context),
-          icon: Icon(Icons.add),
+          icon: const Icon(Icons.add),
         ),
       ],
     );
@@ -176,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ? Container()
                 : FloatingActionButton(
                     onPressed: () => _startAddNewTransaction(context),
-                    child: Icon(Icons.add),
+                    child: const Icon(Icons.add),
                   ),
           );
   }
